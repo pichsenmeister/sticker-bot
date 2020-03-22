@@ -16,7 +16,7 @@ const authorize = async ({ teamId, enterpriseId }) => {
 }
 
 const install = async (req, res) => {
-    let scopes = ['commands', 'chat:write', 'im:history', 'im:write', 'reactions:write']
+    let scopes = ['commands', 'chat:write', 'im:history', 'im:write', 'reactions:write', 'files:read']
 
     let params = {
         client_id: process.env.SLACK_CLIENT_ID,
@@ -32,9 +32,10 @@ const install = async (req, res) => {
 }
 
 const redirect = async (req, res) => {
+
     if (!req.query.code) {
         throw new Error('invalid_code')
-        return
+        return res.send('Invalid code parameter')
     }
 
     let params = {
@@ -76,7 +77,7 @@ const redirect = async (req, res) => {
 
     if (result.data.enterprise) context.enterprise_id = result.data.enterprise.id
     await store.saveTeam(result.data.team.id, context)
-    return res.send('App installed')
+    return res.redirect('https://slack.com/app_redirect?app=ATR11DD1A')
 }
 
 const getUrlWithParams = (url, params) => {
