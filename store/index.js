@@ -4,16 +4,16 @@ const storage = require("./storage");
 if (process.env.GLITCH) {
   admin.initializeApp({
     credential: admin.credential.cert(JSON.parse(process.env.FIREBASE_KEY)),
-    databaseURL: "https://pi-stickers.firebaseio.com",
-    storageBucket: "pi-stickers.appspot.com"
+    databaseURL: process.env.FIREBASE_DATABASE,
+    storageBucket: process.env.FIREBASE_STORAGE
   });
 } else {
-  const serviceAccount = require("./pi-stickers-firebase-adminsdk-bantd-a2fcb76d51.json");
+  const serviceAccount = require(process.env.FIREBASE_SERVICE_ACCOUNT);
 
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
-    databaseURL: "https://pi-stickers.firebaseio.com",
-    storageBucket: "pi-stickers.appspot.com"
+    databaseURL: process.env.FIREBASE_DATABASE,
+    storageBucket: process.env.FIREBASE_STORAGE
   });
 }
 
