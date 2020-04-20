@@ -14,7 +14,7 @@ This app uses the [Bolt for Slack](https://slack.dev/bolt/concepts) framework an
   - `Send a sticker` of type `Global` and callback ID `sticker:shortcut`
   - `Reply with sticker` of type `Message` and callback ID `sticker:respond`
 5. Add a Slash command `/stickers`
-6. Enable 'Event Subscription`
+6. Enable `Event Subscription`
   - Subscribe to `Bot Events`: `app_home_opened`, `message.im`
 7. Add `Bot Token Scopes` in `OAuth & Permissions`
   - `chat:write`
