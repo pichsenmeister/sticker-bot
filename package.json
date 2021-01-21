@@ -12,7 +12,7 @@
   "license": "MIT",
   "dependencies": {
     "@slack/bolt": "^1.8.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "firebase-admin": "^8.9.2",
     "qs": "^6.9.1",
